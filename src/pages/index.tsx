@@ -6,10 +6,6 @@ import Image from "next/image";
 
 import { useKeenSlider } from "keen-slider/react";
 
-import camiseta1 from "../assets/Shirt/1.png";
-import camiseta2 from "../assets/Shirt/2.png";
-import camiseta3 from "../assets/Shirt/3.png";
-
 import "keen-slider/keen-slider.min.css";
 
 interface HomeProps {
@@ -32,7 +28,12 @@ export default function Home({ products }: HomeProps) {
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => {
         return (
-          <Product key={product.id} className="keen-slider__slide">
+          <Product
+            className="keen-slider__slide"
+            href={`/product/${product.id}`}
+            key={product.id}
+            prefetch={false}
+          >
             <Image src={product.imageUrl} width={520} height={480} alt="" />
             <footer>
               <strong>{product.name}</strong>
